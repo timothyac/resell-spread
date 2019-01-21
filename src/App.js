@@ -1,25 +1,36 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Nav from "./components/layout/Nav";
+import MainView from "./components/MainView";
 
 class App extends Component {
+  state = {
+    items: [
+      {
+        id: 1,
+        title: "Phone Case",
+        price: "$100"
+      },
+      {
+        id: 2,
+        title: "Box Logo",
+        price: "$50"
+      },
+      {
+        id: 3,
+        title: "Hoodie",
+        price: "$150"
+      }
+    ]
+  };
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Nav />
+        <div className="container">
+          <h3>Spreadsheet</h3>
+          <MainView items={this.state.items} />
+        </div>
       </div>
     );
   }
