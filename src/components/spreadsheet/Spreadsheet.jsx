@@ -1,9 +1,15 @@
 import React, { Component } from "react";
-import Rows from "./Rows";
+import Row from "./Row";
 
 class Spreadsheet extends Component {
   render() {
-    return this.props.items.map(item => <Rows key={item.id} item={item} />);
+    return (
+      <tbody>
+        {this.props.items.map(item => (
+          <Row key={item.id} item={item} dropDown={this.props.dropDown} />
+        ))}
+      </tbody>
+    );
   }
 }
 

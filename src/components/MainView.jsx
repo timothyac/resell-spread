@@ -4,26 +4,18 @@ import Spreadsheet from "./spreadsheet/Spreadsheet";
 class MainView extends Component {
   render() {
     return (
-      <React.Fragment>
-        <div className="input-group" style={{ marginBottom: 6 }}>
-          <div className="input-group-prepend">
-            <span className="input-group-text" style={{ width: 35 }} id="">
-              #
-            </span>
-          </div>
-          <div className="input-group-prepend">
-            <span className="input-group-text" style={{ width: 330 }} id="">
-              Title
-            </span>
-          </div>
-          <div className="input-group-append">
-            <span className="input-group-text" style={{ width: 328 }} id="">
-              Price
-            </span>
-          </div>
-        </div>
-        <Spreadsheet items={this.props.items} />
-      </React.Fragment>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Initial Price</th>
+            <th scope="col">Market</th>
+            <th scope="col">Profit</th>
+          </tr>
+        </thead>
+        <Spreadsheet items={this.props.items} dropDown={this.props.dropDown} />
+      </table>
     );
   }
 }
