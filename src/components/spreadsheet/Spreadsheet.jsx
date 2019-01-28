@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Subtotal from "./Subtotal";
 import Row from "./Row";
 
 class Spreadsheet extends Component {
@@ -6,8 +7,14 @@ class Spreadsheet extends Component {
     return (
       <tbody>
         {this.props.items.map(item => (
-          <Row key={item.id} item={item} dropDown={this.props.dropDown} />
+          <Row
+            key={item.id}
+            item={item}
+            dropDown={this.props.dropDown}
+            onChange={this.props.onChange}
+          />
         ))}
+        <Subtotal subProfit={this.props.items} />
       </tbody>
     );
   }

@@ -1,21 +1,41 @@
 import React, { Component } from "react";
 
 class Rows extends Component {
-  state = {
-    profit: "$0"
-  };
-
   render() {
-    const { id, title, price, profit } = this.props.item;
+    const { id, title, price, profit, sold } = this.props.item;
     return (
       <tr>
         <th scope="row">{id}</th>
         <td>
-          {" "}
           <input type="text" className="form-control" defaultValue={title} />
         </td>
         <td>
-          <input type="text" className="form-control" defaultValue={price} />
+          <div className="input-group mb-2 mr-sm-2">
+            <div className="input-group-prepend">
+              <div className="input-group-text">$</div>
+            </div>
+            <input
+              name="price"
+              type="text"
+              className="form-control"
+              defaultValue={price}
+              onChange={event => this.props.onChange(event, id)}
+            />
+          </div>
+        </td>
+        <td>
+          <div className="input-group mb-2 mr-sm-2">
+            <div className="input-group-prepend">
+              <div className="input-group-text">$</div>
+            </div>
+            <input
+              name="sold"
+              type="text"
+              className="form-control"
+              defaultValue={sold}
+              onChange={event => this.props.onChange(event, id)}
+            />
+          </div>
         </td>
         <td>
           <div className="dropdown">
@@ -58,13 +78,18 @@ class Rows extends Component {
           </div>
         </td>
         <td>
-          <span type="text" className="form-control" id={`dropdown${id}`}>
-            {profit}
-          </span>
+          <div className="input-group mb-2 mr-sm-2">
+            <div className="input-group-prepend">
+              <div className="input-group-text">$</div>
+            </div>
+            <span className="form-control">{profit}</span>
+          </div>
         </td>
       </tr>
     );
   }
 }
+
+//id={`dropdown${id}`}
 
 export default Rows;

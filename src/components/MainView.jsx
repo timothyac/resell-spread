@@ -10,11 +10,16 @@ class MainView extends Component {
             <th scope="col">#</th>
             <th scope="col">Item</th>
             <th scope="col">Initial Price</th>
+            <th scope="col">Selling Price</th>
             <th scope="col">Market</th>
             <th scope="col">Profit</th>
           </tr>
         </thead>
-        <Spreadsheet items={this.props.items} dropDown={this.props.dropDown} />
+        <Spreadsheet
+          items={this.props.items}
+          dropDown={this.props.dropDown}
+          onChange={this.props.onChange}
+        />
       </table>
     );
   }
