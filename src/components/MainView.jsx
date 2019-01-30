@@ -15,11 +15,7 @@ class MainView extends Component {
             <th scope="col">Profit</th>
           </tr>
         </thead>
-        <Spreadsheet
-          items={this.props.items}
-          dropDown={this.props.dropDown}
-          onChange={this.props.onChange}
-        />
+        <Spreadsheet items={this.props.items} onChange={this.props.onChange} />
       </table>
     );
   }

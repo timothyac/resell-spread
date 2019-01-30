@@ -3,7 +3,6 @@ import "./App.css";
 import Nav from "./components/layout/Nav";
 import AddItem from "./components/layout/Add-Item";
 import MainView from "./components/MainView";
-import Math from "mathjs";
 
 class App extends Component {
   state = {
@@ -13,21 +12,24 @@ class App extends Component {
         title: "Phone Case",
         price: 100,
         sold: 180,
-        profit: 0
+        market: "paypal",
+        profit: 174.48
       },
       {
         id: 2,
         title: "Box Logo",
         price: 50,
         sold: 400,
-        profit: 0
+        market: "stockx",
+        profit: 357
       },
       {
         id: 3,
         title: "Hoodie",
         price: 150,
         sold: 200,
-        profit: 0
+        market: "grailed",
+        profit: 181.9
       }
     ]
   };
@@ -43,58 +45,15 @@ class App extends Component {
       })
     });
 
-  // Change the profit, based on which market the user picked
-  dropDown = (e, market, id) => {
-    // Grab item from state
-    let item = this.state.items.find(item => item.id === id);
-
-    // Define the new profit
-    let value =
-      market === "StockX"
-        ? Math.chain(item.sold)
-            .multiply(0.905)
-            .subtract(5)
-            .done()
-            .toFixed(2)
-        : market === "Grailed"
-        ? Math.chain(item.sold)
-            .multiply(0.911)
-            .subtract(0.3)
-            .done()
-            .toFixed(2)
-        : market === "Paypal"
-        ? Math.chain(item.sold)
-            .multiply(0.971)
-            .subtract(0.3)
-            .done()
-            .toFixed(2)
-        : market === "Goat"
-        ? Math.chain(item.sold)
-            .multiply(0.905)
-            .subtract(5)
-            .done()
-            .toFixed(2)
-        : 0;
-
-    // Change the state
-    this.setState({
-      items: this.state.items.map(item => {
-        if (item.id === id) {
-          item.profit = value;
-        }
-        return item;
-      })
-    });
-  };
-
   // Add new item to the state
-  addItem = (title, price, sale) => {
+  addItem = (title, price, sale, market, profit) => {
     const newItem = {
-      id: 4,
+      id: this.state.items.length + 1,
       title,
       price: Number(price),
       sold: Number(sale),
-      profit: 0
+      market,
+      profit: Number(profit)
     };
     this.setState({ items: [...this.state.items, newItem] });
   };
@@ -107,11 +66,7 @@ class App extends Component {
         <div className="container">
           <h3 className="m-3">Spreadsheet</h3>
           <AddItem addItem={this.addItem} />
-          <MainView
-            items={this.state.items}
-            dropDown={this.dropDown}
-            onChange={this.onChange}
-          />
+          <MainView items={this.state.items} onChange={this.onChange} />
         </div>
       </div>
     );

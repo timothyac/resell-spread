@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Math from "mathjs";
 
 class Subtotal extends Component {
   // Totals up Inital Prices per Item
@@ -18,7 +19,14 @@ class Subtotal extends Component {
   // Totals up Profits per Item
   subProfit = () => {
     let aNum = 0;
-    this.props.subProfit.forEach(item => (aNum += Number(item.profit)));
+    this.props.subProfit.forEach(
+      item =>
+        (aNum += Number(
+          Math.chain(Number(item.profit))
+            .done()
+            .toFixed(2)
+        ))
+    );
     return aNum;
   };
 
@@ -44,6 +52,7 @@ class Subtotal extends Component {
           </div>
         </td>
         <td />
+
         <td>
           <div className="input-group mb-2 mr-sm-2">
             <div className="input-group-prepend">

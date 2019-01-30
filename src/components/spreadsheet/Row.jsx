@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Rows extends Component {
   render() {
-    const { id, title, price, profit, sold } = this.props.item;
+    const { id, title, price, profit, sold, market } = this.props.item;
     return (
       <tr>
         <th scope="row">{id}</th>
@@ -14,13 +14,7 @@ class Rows extends Component {
             <div className="input-group-prepend">
               <div className="input-group-text">$</div>
             </div>
-            <input
-              name="price"
-              type="text"
-              className="form-control"
-              defaultValue={price}
-              onChange={event => this.props.onChange(event, id)}
-            />
+            <span className="form-control">{price}</span>
           </div>
         </td>
         <td>
@@ -28,53 +22,12 @@ class Rows extends Component {
             <div className="input-group-prepend">
               <div className="input-group-text">$</div>
             </div>
-            <input
-              name="sold"
-              type="text"
-              className="form-control"
-              defaultValue={sold}
-              onChange={event => this.props.onChange(event, id)}
-            />
+            <span className="form-control">{sold}</span>
           </div>
         </td>
         <td>
-          <div className="dropdown">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Marketplace
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <button
-                onClick={event => this.props.dropDown(event, "StockX", id)}
-                className="dropdown-item"
-              >
-                StockX
-              </button>
-              <button
-                onClick={event => this.props.dropDown(event, "Grailed", id)}
-                className="dropdown-item"
-              >
-                Grailed
-              </button>
-              <button
-                onClick={event => this.props.dropDown(event, "Paypal", id)}
-                className="dropdown-item"
-              >
-                Paypal
-              </button>
-              <button
-                onClick={event => this.props.dropDown(event, "Goat", id)}
-                className="dropdown-item"
-              >
-                Goat
-              </button>
-            </div>
+          <div className="input-group mb-2 mr-sm-2">
+            <span className="form-control">{market}</span>
           </div>
         </td>
         <td>
