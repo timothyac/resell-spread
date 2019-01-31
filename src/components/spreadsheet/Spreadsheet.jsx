@@ -7,7 +7,12 @@ class Spreadsheet extends Component {
     return (
       <tbody>
         {this.props.items.map(item => (
-          <Row key={item.id} item={item} onChange={this.props.onChange} />
+          <Row
+            key={item.id}
+            item={item}
+            onChange={this.props.onChange}
+            deleteItem={this.props.deleteItem}
+          />
         ))}
         <Subtotal subProfit={this.props.items} />
       </tbody>

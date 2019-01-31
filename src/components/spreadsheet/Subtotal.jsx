@@ -52,7 +52,7 @@ class Subtotal extends Component {
           </div>
         </td>
         <td />
-
+        <td />
         <td>
           <div className="input-group mb-2 mr-sm-2">
             <div className="input-group-prepend">
