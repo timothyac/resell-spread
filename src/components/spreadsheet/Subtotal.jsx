@@ -19,21 +19,20 @@ class Subtotal extends Component {
   // Totals up Profits per Item
   subProfit = () => {
     let aNum = 0;
-    this.props.subProfit.forEach(
-      item =>
-        (aNum += Number(
-          Math.chain(Number(item.profit))
-            .done()
-            .toFixed(2)
-        ))
-    );
+    this.props.subProfit.forEach(item => {
+      aNum = Number(
+        Math.chain(Number(item.profit))
+          .add(aNum)
+          .done()
+          .toFixed(2)
+      );
+    });
     return aNum;
   };
 
   render() {
     return (
       <tr>
-        <th />
         <td />
         <td>
           <div className="input-group mb-2 mr-sm-2">
@@ -61,6 +60,7 @@ class Subtotal extends Component {
             <span className="form-control">{this.subProfit()}</span>
           </div>
         </td>
+        <td />
       </tr>
     );
   }

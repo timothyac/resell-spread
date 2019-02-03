@@ -5,10 +5,11 @@ class Rows extends Component {
     const { id, title, price, profit, sold, market, fees } = this.props.item;
     return (
       <tr>
-        <th scope="row">{id}</th>
-        <td>
-          <input type="text" className="form-control" defaultValue={title} />
-        </td>
+        <th>
+          <div className="input-group mb-2 mr-sm-2">
+            <span className="form-control">{title}</span>
+          </div>
+        </th>
         <td>
           <div className="input-group mb-2 mr-sm-2">
             <div className="input-group-prepend">

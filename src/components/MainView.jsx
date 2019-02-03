@@ -7,7 +7,6 @@ class MainView extends Component {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Item</th>
             <th scope="col">Initial Price</th>
             <th scope="col">Selling Price</th>
