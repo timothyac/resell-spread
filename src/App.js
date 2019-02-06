@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import uuid from "uuid";
 
 import "./App.css";
-import Nav from "./components/layout/Nav";
-import AddItem from "./components/layout/Add-Item";
-import MainView from "./components/MainView";
+import Nav from "./components/app-layout/Nav";
+import Footer from "./components/app-layout/Footer";
+import AddItem from "./components/app-layout/Add-Item";
+import MainView from "./components/spreadsheet/Spreadsheet-Index";
+import About from "./components/About";
+import Calculator from "./components/Calculator";
 
 class App extends Component {
   state = {
@@ -65,18 +69,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Nav />
-        <div className="container">
-          <h3 className="m-3">Spreadsheet</h3>
-          <AddItem addItem={this.addItem} />
-          <MainView
-            items={this.state.items}
-            onChange={this.onChange}
-            deleteItem={this.deleteItem}
+      <Router>
+        <div className="App">
+          <Nav />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <React.Fragment>
+                <div className="container">
+                  <h3 className="m-3">Spreadsheet</h3>
+                  <AddItem addItem={this.addItem} />
+                  <MainView
+                    items={this.state.items}
+                    onChange={this.onChange}
+                    deleteItem={this.deleteItem}
+                  />
+                </div>
+              </React.Fragment>
+            )}
           />
+          <Route path="/about" component={About} />
+          <Route path="/calculator" component={Calculator} />
+          <Footer />
         </div>
-      </div>
+      </Router>
     );
   }
 }

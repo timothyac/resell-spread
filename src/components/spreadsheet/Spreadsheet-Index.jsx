@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Spreadsheet from "./spreadsheet/Spreadsheet";
+import Spreadsheet from "./layout/Spreadsheet";
 
 class MainView extends Component {
   render() {
