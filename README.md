@@ -1,6 +1,6 @@
 # ResellSpread
 
-Hello! Thanks for checking this out! Check out the live demo [Here](https://resell-spread.herokuapp.com/)! Feel free to fork or use the code in any way you see fit! 
+Hello! Thanks for checking this out! Check out the live demo [here](https://resell-spread.herokuapp.com/)! Feel free to fork or use the code in any way you see fit! 
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
