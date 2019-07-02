@@ -4,13 +4,13 @@ class About extends Component {
   render() {
     return (
       <div className="container mt-4">
-        <div class="card">
-          <div class="card-header">
+        <div className="card">
+          <div style={{ backgroundColor: "#F8F9FA" }} className="card-header">
             <h4>About</h4>
           </div>
-          <div class="card-body">
-            <h5 class="card-title">Welcome to ResellSpread</h5>
-            <p class="card-text">
+          <div className="card-body">
+            <h5 className="card-title">Welcome to ResellSpread</h5>
+            <p className="card-text">
               ResellSpread is an open-source spreadsheet application, for
               Resellers, by Resellers. Instead of wasting time trying to find a
               good excel/google spreadsheet setup, just input your information
@@ -27,7 +27,7 @@ class About extends Component {
             </p>
             <a
               href="https://github.com/SunstroUS/ResellSpread"
-              class="btn btn-primary"
+              className="btn btn-primary"
             >
               Github
             </a>

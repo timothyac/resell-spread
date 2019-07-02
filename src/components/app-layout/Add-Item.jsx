@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Math from "mathjs";
 
+import ReactTooltip from "react-tooltip";
+
 class AddItem extends Component {
   state = {
     title: "",
@@ -48,6 +50,15 @@ class AddItem extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  // Update Dropdown
+  newMarket = e => {
+    if (this.state.market === "") {
+      return "Marketplace";
+    } else {
+      return this.state.market;
+    }
+  };
+
   render() {
     return (
       <div className="container">
@@ -71,6 +82,7 @@ class AddItem extends Component {
                 placeholder="Item Price"
                 value={this.state.price}
                 onChange={this.onChange}
+                data-tip="Price you bought it at"
               />
             </div>
           </div>
@@ -83,6 +95,7 @@ class AddItem extends Component {
                 placeholder="Sale Price"
                 value={this.state.sold}
                 onChange={this.onChange}
+                data-tip="Price you sold it at"
               />
             </div>
             <div className="form-group col-md-2">
@@ -104,7 +117,7 @@ class AddItem extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Marketplace
+                {this.newMarket()}
               </button>
               <div
                 className="dropdown-menu "
@@ -114,7 +127,7 @@ class AddItem extends Component {
                   name="market"
                   onClick={this.onChange}
                   className="dropdown-item"
-                  value="stockx"
+                  value="StockX"
                 >
                   StockX
                 </button>
@@ -122,7 +135,7 @@ class AddItem extends Component {
                   name="market"
                   onClick={this.onChange}
                   className="dropdown-item"
-                  value="grailed"
+                  value="Grailed"
                 >
                   Grailed
                 </button>
@@ -130,7 +143,7 @@ class AddItem extends Component {
                   name="market"
                   onClick={this.onChange}
                   className="dropdown-item"
-                  value="paypal"
+                  value="Paypal"
                 >
                   Paypal
                 </button>
@@ -138,7 +151,7 @@ class AddItem extends Component {
                   name="market"
                   onClick={this.onChange}
                   className="dropdown-item"
-                  value="goat"
+                  value="Goat"
                 >
                   Goat
                 </button>
@@ -149,6 +162,7 @@ class AddItem extends Component {
             </div>
           </div>
         </form>
+        <ReactTooltip effect="solid" />
       </div>
     );
   }
@@ -165,28 +179,28 @@ function produceFees(market, preShipping, soldPrice) {
   }
 
   let value =
-    market === "stockx"
+    market === "StockX"
       ? Math.chain(soldPrice)
           .multiply(0.905)
           .subtract(5)
           .subtract(shipping)
           .done()
           .toFixed(2)
-      : market === "grailed"
+      : market === "Grailed"
       ? Math.chain(soldPrice)
           .multiply(0.911)
           .subtract(0.3)
           .subtract(shipping)
           .done()
           .toFixed(2)
-      : market === "paypal"
+      : market === "Paypal"
       ? Math.chain(soldPrice)
           .multiply(0.971)
           .subtract(0.3)
           .subtract(shipping)
           .done()
           .toFixed(2)
-      : market === "goat"
+      : market === "Goat"
       ? Math.chain(soldPrice)
           .multiply(0.905)
           .subtract(5)

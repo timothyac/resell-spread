@@ -24,6 +24,9 @@ function Header() {
           <Link className="nav-item nav-link" to="/about">
             About
           </Link>
+          <a href="https://discord.gg/T4gVCex" className="nav-item nav-link">
+            Discord
+          </a>
         </div>
       </div>
     </nav>
